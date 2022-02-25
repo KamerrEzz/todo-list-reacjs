@@ -1,0 +1,14 @@
+.todoModal {
+    background: rgba(0, 0, 0, 0.363);
+    color: white;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    
+}

@@ -1,6 +1,7 @@
 {
   "name": "curso-react",
   "version": "0.1.0",
+  "description": "Esto fue un proyecto de practica sobre Reactjs usando context, hooks",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
