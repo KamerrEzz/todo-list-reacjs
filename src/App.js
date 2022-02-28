@@ -33,12 +33,18 @@ function App() {
         <TodoSearch search={search} setSearch={setSearch} />
       </TodoHeader>
 
-      <TodoList>
-        {loading && <div>Cargando...</div>}
-        {error && <div>Error</div>}
-        {!loading && !todoSearched.length && <div>No hay todos</div>}
+      <TodoList
+        Error={error}
+        Loading={loading}
+        todoSearched={todoSearched}
+        todoTotal={todoTotal}
+        search={search}
 
-        {todoSearched.map((item, index) => (
+        onError={() => <div>Cargando...</div>}
+        onLoading={() => <div>Cargando...</div>}
+        onEmpty={() => <div>No hay datos</div>}
+        onEmptySearch={(searchText) => <div>No se encontro resultado para {searchText}</div>}
+        onData={(item, index) => (
           <TodoItem
             key={index}
             text={item.text}
@@ -46,8 +52,8 @@ function App() {
             onCompled={() => todoCompleted(item.text)}
             onDeleted={() => todoDelete(item.text)}
           />
-        ))}
-      </TodoList>
+        )}
+      />
 
       {openModal && (
         <TodoModal>

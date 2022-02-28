@@ -1,23 +1,20 @@
 # Patrones de Render y Composición
 
-## Nota
+## Qué son las render props y render functions
 
-Lo que se ha hecho a qui es tener una composicion donde podamos tener un orden y un uso de los customHooks
-para no tener que usar el `React Context` en toda y en un solo lugar de nuestra aplicacion.
+Nos ayudan a elevar nuestra composición de componentes a otro nivel.
+Las render props nos permiten ser más específicos sobre que vamos a renderizar, cuando y donde vamos a renderizar cada parte del contenido de nuestros componentes.
 
----
+## Render Function
 
-Es un patrón para crear componentes que nos da libertad para elegir dónde y cómo usamos nuestros componentes. Cada componente debe cumplir una tarea muy específica pero no debe de decirnos exactamente como usar esa solución que nos provee, debe ser muy flexible dándonos libertad para usar la información como queramos.
+Es el patrón de entregar la información de nuestro componente en una función. No es exclusivo de react context, nosotros podemos crear nuestros propios componentes que usen este patrón, que reciban una función para que le podamos enviar la información que queremos proveer y luego si, renderizar los componentes que ya tienen la info gracias a la función.
 
-Esto nos permite hacer a los componentes más fáciles de integrar al resto de componentes, y agiliza el proceso de reutilizar o hacer cambios en los componentes.
+## Render Props
 
----
+Cuando ya no mandamos la función dentro del componente, si no que la enviamos en alguna otra propiedad del componente. Podemos jugar con este patrón para que compartir información sea más divertido.
 
-Para armar tu aplicación de forma correcta necesitas primero pensar en la mínima cantidad de estado mutable que necesita la aplicación. Lo importante acá es que no te repitas (DRY: Don’t Repeat Yourself). Necesitas descubrir la mínima representación del estado que tu aplicación va a necesitar y calcular el resto bajo demanda.
-
-Hazte estas tres preguntas por cada pieza de información:
-
-¿Viene del padre como props? Entonces probablemente no sea estado.
-¿Se queda sin cambios con el tiempo? Entonces, probablemente no sea estado.
-¿Puedes calcularlo con base a otro estado o prop en tu componente? Entonces, no es parte del estado.
-De esta manera podrás identificar de forma correcta tus estados.
+```js
+<RenderProps
+	renderProp={info => <OtroCompo {...info} />}
+/>
+```
