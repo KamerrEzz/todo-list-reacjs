@@ -1,8 +1,12 @@
-h1 {
+.todoCounter {
     text-transform: capitalize;
     color: rgb(231, 231, 231);
     text-align: center;
     font-size: 2em;
     font-weight: bold;    
     margin: 0;
+}
+
+.todoCounter--loading {
+    opacity: .5;
 }

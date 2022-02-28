@@ -18,3 +18,8 @@ Cuando ya no mandamos la función dentro del componente, si no que la enviamos e
 	renderProp={info => <OtroCompo {...info} />}
 />
 ```
+
+## React.Children y React.cloneElement
+Para poder pasar propiedades especiales a los componentes hijos de nuestros componentes contenedores cuando hacemos composición.
+
+Cuando enviamos más de un componente o elemento hijo al que use CloneElement, la app deja de funcionar y suelta un error. CloneElement necesita recibir un elemento de react, cuando children es más de un componente entonces tenemos un array, para esto existe React.Children que nos ayuda a que CloneElement entienda sin importar cuantos elementos vienen en el props.children.

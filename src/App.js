@@ -28,9 +28,9 @@ function App() {
 
   return (
     <>
-      <TodoHeader>
-        <TodoCounter todoTotal={todoTotal} todoCompletes={todoCompletes} />
-        <TodoSearch search={search} setSearch={setSearch} />
+      <TodoHeader loading={loading}>
+        <TodoCounter todoTotal={todoTotal} todoCompletes={todoCompletes}  />
+        <TodoSearch search={search} setSearch={setSearch}  />
       </TodoHeader>
 
       <TodoList
