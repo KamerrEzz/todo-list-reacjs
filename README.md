@@ -1,5 +1,9 @@
 # Patrones de Render y Composición
 
+## NOTA
+
+En cada `commit` he puesto los puntos e informacion importante.
+
 ## Qué son las render props y render functions
 
 Nos ayudan a elevar nuestra composición de componentes a otro nivel.
