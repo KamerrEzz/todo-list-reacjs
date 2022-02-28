@@ -5,13 +5,14 @@ import TodoSearch from "./components/TodoSearch/TodoSearch";
 import TodoList from "./components/TodoList/TodoList";
 import TodoItem from "./components/TodoItem/TodoItem";
 import CreateTodoButton from "./components/CreateTodoButton/CreateTodoButton";
-import TodoModal from "./components/Modal/todoModal"
-import TodoCreate from "./components/froms/todoCreate/todoCreate"
+import TodoModal from "./components/Modal/todoModal";
+import TodoCreate from "./components/froms/todoCreate/todoCreate";
+import TodoHeader from "./components/TodoHeader/TodoHeader";
 
 import { TodoContext } from "./context";
 
 function appUI() {
-  const { 
+  const {
     loading,
     todoSearched,
     error,
@@ -19,12 +20,18 @@ function appUI() {
     todoDelete,
     openModal,
     setOpenModal,
-   } = React.useContext(TodoContext);
+    todoTotal,
+    todoCompletes,
+    search,
+    setSearch,
+  } = React.useContext(TodoContext);
 
   return (
     <>
-      <TodoCounter />
-      <TodoSearch />
+      <TodoHeader>
+        <TodoCounter todoTotal={todoTotal} todoCompletes={todoCompletes} />
+        <TodoSearch search={search} setSearch={setSearch} />
+      </TodoHeader>
       <TodoList>
         {loading && <div>Cargando...</div>}
         {error && <div>Error</div>}
@@ -47,7 +54,7 @@ function appUI() {
         </TodoModal>
       )}
 
-      <CreateTodoButton setOpenModal={setOpenModal}/>
+      <CreateTodoButton setOpenModal={setOpenModal} />
     </>
   );
 }
