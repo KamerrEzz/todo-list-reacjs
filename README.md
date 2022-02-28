@@ -1,5 +1,12 @@
 # Patrones de Render y Composición
 
+## Nota
+
+Lo que se ha hecho a qui es tener una composicion donde podamos tener un orden y un uso de los customHooks
+para no tener que usar el `React Context` en toda y en un solo lugar de nuestra aplicacion.
+
+---
+
 Es un patrón para crear componentes que nos da libertad para elegir dónde y cómo usamos nuestros componentes. Cada componente debe cumplir una tarea muy específica pero no debe de decirnos exactamente como usar esa solución que nos provee, debe ser muy flexible dándonos libertad para usar la información como queramos.
 
 Esto nos permite hacer a los componentes más fáciles de integrar al resto de componentes, y agiliza el proceso de reutilizar o hacer cambios en los componentes.

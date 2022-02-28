@@ -1,9 +1,8 @@
 import React from "react";
-import { useLocalStorage } from "../hooks/localStorage";
+import { useLocalStorage } from "./localStorage";
 
-const TodoContext = React.createContext();
 
-const TodoProvider = ({ children }) => {
+const useTodos = () => {
   const {
     item: todos,
     todoSave,
@@ -46,9 +45,7 @@ const TodoProvider = ({ children }) => {
     todoSave(newTodos);
   };
 
-  return (
-    <TodoContext.Provider
-      value={{
+  return {
         todos,
         todoSave,
         todoCreate,
@@ -63,19 +60,9 @@ const TodoProvider = ({ children }) => {
         todoDelete,
         openModal,
         setOpenModal,
-      }}
-    >
-      {children}
-    </TodoContext.Provider>
-  );
+      }
+
 };
 
-export { TodoContext, TodoProvider };
+export { useTodos };
 
-/**
-    ¿Que es el React Context?
-
-    Es una herramienta de React que permite compartir estados a través de nuestros diferentes componentes de la app.
-    Esto a partir de Providers y Consumer.
-    Nos ayuda a reducir la cantidad de props que tengamos que compartir en todos los elementos de nuestros componentes.
- */

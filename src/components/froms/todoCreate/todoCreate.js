@@ -1,10 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from "react";
-import { TodoContext } from "../../../context";
 import './todoCreate.css';
 
-function TodoCreate() {
-  const { todoCreate, setOpenModal } = React.useContext(TodoContext);
+function TodoCreate({ todoCreate, setOpenModal }) {
   const [text, setText] = React.useState("");
   const [error, setError] = React.useState(false);
 
