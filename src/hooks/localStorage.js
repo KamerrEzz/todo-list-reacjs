@@ -1,13 +1,7 @@
 import React from "react";
 
-// const defaultTodos = [
-//   { text: 'Cortar cebolla', completed: true },
-//   { text: 'Tomar el cursso de intro a React', completed: false },
-//   { text: 'Llorar con la llorona', completed: true },
-//   { text: 'LALALALAA', completed: false },
-// ];
-
 const useLocalStorage = (key, initialValue) => {
+  const [sincronized, setSincronized] = React.useState(true);
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
   const [item, setItem] = React.useState(initialValue);
@@ -25,11 +19,12 @@ const useLocalStorage = (key, initialValue) => {
         }
         setLoading(false);
         setItem(todosLocal);
+        setSincronized(true);
       } catch (error) {
         setError(true);
       }
     }, 5000);
-  });
+  }, [sincronized]);
 
   const todoSave = (newTodo) => {
     const parseTodo = JSON.stringify(newTodo);
@@ -37,11 +32,17 @@ const useLocalStorage = (key, initialValue) => {
     setItem(newTodo);
   };
 
+  const sincronizedToggle = () => {
+    setLoading(true);
+    setSincronized(false);
+  };
+
   return {
     item,
     todoSave,
     error,
     loading,
+    sincronizedToggle,
   };
 };
 

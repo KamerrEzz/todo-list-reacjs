@@ -4,7 +4,7 @@ import './CreateTodoButton.css';
 function CreateTodoButton({openModal, setOpenModal}) {
 
     const OnClick = () => {
-        setOpenModal(true)
+        setOpenModal({create: true, sincronized: false});
     }
 
     return (

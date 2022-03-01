@@ -8,9 +8,10 @@ const useTodos = () => {
     todoSave,
     error,
     loading,
+    sincronizedToggle,
   } = useLocalStorage("todos_v1", []);
   const [search, setSearch] = React.useState("");
-  const [openModal, setOpenModal] = React.useState(false);
+  const [openModal, setOpenModal] = React.useState({create: false, sincronized: false});
   const todoCompletes = todos.filter((todo) => !!todo.completed).length;
   const todoTotal = todos.length;
   let todoSearched = [];
@@ -60,6 +61,7 @@ const useTodos = () => {
         todoDelete,
         openModal,
         setOpenModal,
+        sincronizedToggle,
       }
 
 };

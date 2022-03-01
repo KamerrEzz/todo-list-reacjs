@@ -25,7 +25,7 @@ function TodoList({
       {(!!todoTotal && !todoSearched.length) && onEmptySearch(search)}
 
 
-      <ul className="TodoList_item">{todoSearched.map(render)}</ul>
+      <ul className="TodoList_item">{(!Loading) && todoSearched.map(render)}</ul>
     </section>
   );
 }

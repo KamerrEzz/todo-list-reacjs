@@ -7,6 +7,7 @@ import CreateTodoButton from "./components/CreateTodoButton/CreateTodoButton";
 import TodoModal from "./components/Modal/todoModal";
 import TodoCreate from "./components/froms/todoCreate/todoCreate";
 import TodoHeader from "./components/TodoHeader/TodoHeader";
+import ChangeAlertWithStorageListener from "./components/onChange";
 
 import { useTodos } from "./hooks/useTodo";
 
@@ -24,13 +25,14 @@ function App() {
     search,
     setSearch,
     todoCreate,
+    sincronizedToggle,
   } = useTodos();
 
   return (
     <>
       <TodoHeader loading={loading}>
-        <TodoCounter todoTotal={todoTotal} todoCompletes={todoCompletes}  />
-        <TodoSearch search={search} setSearch={setSearch}  />
+        <TodoCounter todoTotal={todoTotal} todoCompletes={todoCompletes} />
+        <TodoSearch search={search} setSearch={setSearch} />
       </TodoHeader>
 
       <TodoList
@@ -39,11 +41,12 @@ function App() {
         todoSearched={todoSearched}
         todoTotal={todoTotal}
         search={search}
-
         onError={() => <div>Cargando...</div>}
         onLoading={() => <div>Cargando...</div>}
         onEmpty={() => <div>No hay datos</div>}
-        onEmptySearch={(searchText) => <div>No se encontro resultado para {searchText}</div>}
+        onEmptySearch={(searchText) => (
+          <div>No se encontro resultado para {searchText}</div>
+        )}
         onData={(item, index) => (
           <TodoItem
             key={index}
@@ -55,13 +58,15 @@ function App() {
         )}
       />
 
-      {openModal && (
+      {openModal?.create && (
         <TodoModal>
           <TodoCreate todoCreate={todoCreate} setOpenModal={setOpenModal} />
         </TodoModal>
       )}
 
-      <CreateTodoButton setOpenModal={setOpenModal} />
+      <ChangeAlertWithStorageListener sincronizedToggle={sincronizedToggle} />
+
+      <CreateTodoButton openModal={openModal} setOpenModal={setOpenModal} />
     </>
   );
 }

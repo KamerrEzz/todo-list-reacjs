@@ -20,7 +20,7 @@ function TodoCreate({ todoCreate, setOpenModal }) {
         todoCreate(text);
         setText("");
         setError(false);
-        setOpenModal(false);
+        setOpenModal({create: false, sincronized: false});
     } else {
         setError(true);
     }
@@ -33,7 +33,7 @@ function TodoCreate({ todoCreate, setOpenModal }) {
       <textarea className="modalTodoCreate-textarea" onChange={onChange} placeholder="Cositas por cositas" />
       <div>
         <button className="modalTodoCreate-btn modalTodoCreate-btn-Create" type="submit">Agregar</button>
-        <button className="modalTodoCreate-btn modalTodoCreate-btn-Close" onClick={() => setOpenModal(false)}>Cancelar</button>
+        <button className="modalTodoCreate-btn modalTodoCreate-btn-Close" type="submit" onClick={() => setOpenModal({create: false, sincronized: false})}>Cancelar</button>
       </div>
     </form>
   );
