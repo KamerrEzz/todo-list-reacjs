@@ -1,8 +1,12 @@
 import React from "react";
-import withStorageListener from "./withStorageListener";
+import useStorageListener from "./useStorageListener";
 import './index.css'
 
-function index({ show, showToggle }) {
+function changeAlert({ sincronizedToggle }) {
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { storageChange: show, showToggle } = useStorageListener(sincronizedToggle);
+
   if(show) {
     return <div className="sincronized">
       <p className="sincronized-p">Hubo un cambio en otra ventana</p>
@@ -13,6 +17,5 @@ function index({ show, showToggle }) {
   }
 }
 
-const ChangeAlertWithStorageListener = withStorageListener(index);
 
-export default ChangeAlertWithStorageListener;
+export default changeAlert;
